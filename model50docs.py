@@ -15,7 +15,7 @@ import re
 
 doc1=[]
 for j in range (50):
-    with open('/Users/ram/Desktop/Q/InBev/Documents/bbc/All_Files/file'+str(j+1)+'.txt', 'r') as myfile:
+    with open('file'+str(j+1)+'.txt', 'r') as myfile:
         data1=myfile.read().lower()
         #.replace('\n', ' ').replace(",","").replace(".","").replace("-","").replace("(","").replace(")","").replace("$","").replace('"',"").replace("'","").replace("%","")                                
         data1=re.sub('[^a-zA-Z0-9 \.]', '', data1)
@@ -42,7 +42,7 @@ for epoch in range(passes):
     print('Completed pass %i at alpha %f' % (epoch + 1, alpha_val))
     alpha_val -= alpha_delta
 
-#model = doc2vec.Doc2Vec.load("/Users/ram/Desktop/Q/InBev/Codes/model50docs.model")
+#model = doc2vec.Doc2Vec.load("model50docs.model")
 
 query = raw_input("Enter your Question: ")
 filtered_query = [re.sub('[^a-zA-Z0-9 \.]', '', word.lower()) for word in query.split() if word not in stopwords.words('english')]
