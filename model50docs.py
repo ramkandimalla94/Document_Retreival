@@ -13,11 +13,17 @@ import re
 #from termcolor import colored
 #import json
 
+
+# skip training model again if u trained once..model is saved after training as model50docs
+# u can load the model by uncommenting the below line
+'''
+model = doc2vec.Doc2Vec.load("model50docs.model")
+
+'''
 doc1=[]
 for j in range (50):
     with open('file'+str(j+1)+'.txt', 'r') as myfile:
         data1=myfile.read().lower()
-        #.replace('\n', ' ').replace(",","").replace(".","").replace("-","").replace("(","").replace(")","").replace("$","").replace('"',"").replace("'","").replace("%","")                                
         data1=re.sub('[^a-zA-Z0-9 \.]', '', data1)
         doc1.append(data1)      
 docs = []
@@ -42,11 +48,10 @@ for epoch in range(passes):
     print('Completed pass %i at alpha %f' % (epoch + 1, alpha_val))
     alpha_val -= alpha_delta
 
-#model = doc2vec.Doc2Vec.load("model50docs.model")
+model.save('model50docs.model')
 
 query = raw_input("Enter your Question: ")
 filtered_query = [re.sub('[^a-zA-Z0-9 \.]', '', word.lower()) for word in query.split() if word not in stopwords.words('english')]
-#.replace('\n', ' ').replace(",","").replace(".","").replace("-","").replace("(","").replace(")","").replace("$","").replace('"',"").replace("'","").replace("%","").replace("?","")  for word in query.split() if word not in stopwords.words('english')]
 vec=model.infer_vector(query.lower().split())
 
 def square_rooted(x):
@@ -66,13 +71,20 @@ l1=sorted(cosinelist,reverse=True)
 print
 print('Most matched Document: file'+str(cosinelist.index(l1[0])+1)+'.txt')
 print 
- 
 
 fname='file'+str(cosinelist.index(l1[0])+1)+'.txt'
 with open('/Users/ram/Desktop/Q/InBev/Documents/bbc/All_Files/file'+str(cosinelist.index(l1[0])+1)+'.txt', 'r') as myfile:
     data=myfile.read().lower()
 print data
-     
+
+for in in range(10):
+    print ('Ranking of Dcouments:'
+    print ('Rank'+' '+str(i)+'= file'+str(cosinelist.index(l1[i]+1)+'.txt')
+           
+           
+'''
+This is something i tried to highlight the words from the query most matched document but it is not much effective
+           
 #def highlight_many(data, filtered_query):
 #    replacement= lambda match: colored(match.group(),'magenta')
 #    data1 = re.sub("|".join(map(re.escape, filtered_query)), replacement, data, flags=re.I)
@@ -106,3 +118,4 @@ print data
 #js=json.loads(json1)
 
 
+'''
