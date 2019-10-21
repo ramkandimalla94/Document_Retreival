@@ -13,7 +13,7 @@ gensim==0.12.1
 google-compute-engine==2.7.1
 idna==2.6
 jmespath==0.9.3
-nltk==3.2.5
+nltk==3.4.5
 numpy==1.13.3
 pandas==0.20.3
 python-dateutil==2.6.1
