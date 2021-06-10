@@ -5,7 +5,7 @@ bz2file==0.98
 certifi==2017.11.5
 chardet==3.0.4
 crcmod==1.7
-Django==1.11.4
+Django==2.2.24
 djangorestframework==3.6.4
 docutils==0.14
 futures==3.2.0
